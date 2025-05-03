@@ -8,6 +8,10 @@ const port = 3000
 // Ensure express js is parsing the raw body through instead of applying it's own encoding
 app.use(bodyParser.raw({ type: '*/*' }));
 
+app.get('/', async (req,res) => {
+    return res.status(200).json({hello: 'world'})
+})
+
 // Example webhook handler
 app.post('/webhook/elevenlabs', async (req, res) => {
     const headers = req.headers['ElevenLabs-Signature'].split(',');
